@@ -6,7 +6,7 @@
 #  name       :string
 #  email      :string
 #  telephone  :string
-#  alias      :string
+#  nickname   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -19,7 +19,7 @@ class User < ApplicationRecord
   # accepts_nested_attributes_for :assignments, reject_if: :all_blank, allow_destroy: true
 
   # Validations
-  validates_presence_of :name, :email, :telephone, :alias
+  validates_presence_of :name, :email, :telephone, :nickname
   # validates_associated :assignments
   # validates :assignments, :nested_attributes_uniqueness => {:field => :client_id}
 end

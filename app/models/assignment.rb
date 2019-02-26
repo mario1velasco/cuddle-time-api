@@ -11,12 +11,12 @@
 
 class Assignment < ApplicationRecord
   # Relations
-  belongs_to :time_table, inverse_of: :assignments
-  belongs_to :user, inverse_of: :assignments
+  belongs_to :time_table, optional: true
+  belongs_to :user, optional: true
 
   # Attributes
 
   # Validations
-  validates_presence_of :user_id, :time_table_id
+  validates_presence_of :user_id
   # validates :client_id, presence: true, uniqueness: { scope: :user_id }
 end

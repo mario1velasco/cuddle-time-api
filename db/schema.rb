@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_133054) do
     t.string "name"
     t.string "email"
     t.string "telephone"
-    t.string "alias"
+    t.string "nickname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

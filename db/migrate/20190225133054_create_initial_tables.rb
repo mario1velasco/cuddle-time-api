@@ -1,10 +1,10 @@
 class CreateInitialTables < ActiveRecord::Migration[5.2]
-  def up
+  def change
     create_table :users do |t|
       t.string :name
       t.string :email
       t.string :telephone
-      t.string :alias
+      t.string :nickname
 
       t.timestamps
     end
