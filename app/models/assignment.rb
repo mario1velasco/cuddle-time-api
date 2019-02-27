@@ -11,8 +11,8 @@
 
 class Assignment < ApplicationRecord
   # Relations
-  belongs_to :time_table, optional: true
-  belongs_to :user, optional: true
+  belongs_to :time_table, inverse_of: :assignments
+  belongs_to :user, inverse_of: :assignments
 
   # Attributes
 

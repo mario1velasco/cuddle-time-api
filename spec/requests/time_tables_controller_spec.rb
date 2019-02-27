@@ -91,12 +91,46 @@ RSpec.describe TimeTablesController, type: :request do
                                               assignments_attributes: [{ user_id: 1 }] } }
 
       it 'returns status code 201' do
-        # binding.pry
         expect(response).to have_http_status(201)
       end
 
       it 'creates a time_table' do
         expect(json['start_time']).to eq(160)
+      end
+    end
+  end
+
+  # Test suite for GET /users/:user_id/time_tables
+  describe 'GET /users/:user_id/time_tables' do
+    let!(:user) { create(:user) }
+    let!(:time_tables) { create_list(:time_table, 20, user_id: user.id) }
+    let(:user_id) { users.first.id }
+    let(:id) { time_tables.first.id }
+    before { post '/time_tables', params: { day: 1,
+                                            start_time: 160,
+                                            end_time: 360,
+                                            assignments_attributes: [{ user_id: 1 }] } }
+    before { get "/users/#{user_id}/time_tables" }
+
+    context 'when user exists' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'returns all user time_tables' do
+        expect(json.size).to eq(10)
+      end
+    end
+
+    context 'when user does not exist' do
+      let(:user_id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find User/)
       end
     end
   end
