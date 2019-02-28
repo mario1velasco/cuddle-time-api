@@ -9,14 +9,13 @@ class TimeTablesController < ApplicationController
 
   # GET /users/:user_id/time_tables/:id
   def show
-    # binding.pry
     json_response(@time_table)
   end
 
-  # POST /time_tables
+  # POST /users/:user_id/time_tables
   def create
-    @time_table = TimeTable.create!(time_table_params)
-    json_response(@time_table, :created)
+    @user.time_tables.create!(time_table_params)
+    json_response(@user, :created)
   end
 
   private
