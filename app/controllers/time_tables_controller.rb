@@ -1,23 +1,21 @@
 class TimeTablesController < ApplicationController
-  before_action :set_time_table, only: %i[show update destroy]
+  before_action :set_user
+  before_action :set_user_time_table, only: %i[show update destroy]
 
-  # GET /time_tables
+  # GET /users/:user_id/time_tables
   def index
-    @time_tables = TimeTable.all
-    json_response(@time_tables)
+    json_response(@user.time_tables)
   end
 
-  # GET /time_tables/:id
+  # GET /users/:user_id/time_tables/:id
   def show
+    # binding.pry
     json_response(@time_table)
   end
 
   # POST /time_tables
   def create
-    # @timetable = TimeTable.new(time_table_params)
-    # binding.pry
     @time_table = TimeTable.create!(time_table_params)
-    # @timetable.save!
     json_response(@time_table, :created)
   end
 
@@ -31,7 +29,11 @@ class TimeTablesController < ApplicationController
                   assignments_attributes: %i[id user_id])
   end
 
-  def set_time_table
-    @time_table = TimeTable.find(params[:id])
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  def set_user_time_table
+    @time_table = @user.time_tables.find_by!(id: params[:id]) if @user
   end
 end
