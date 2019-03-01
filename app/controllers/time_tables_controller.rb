@@ -24,6 +24,12 @@ class TimeTablesController < ApplicationController
     head :no_content
   end
 
+  # DELETE /users/:user_id/time_tables/:id
+  def destroy
+    @time_table.destroy
+    head :no_content
+  end
+
   private
 
   def time_table_params

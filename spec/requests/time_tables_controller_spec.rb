@@ -111,4 +111,13 @@ RSpec.describe TimeTablesController, type: :request do
       end
     end
   end
+
+  # Test suite for DELETE /users/:id
+  describe 'DELETE /users/:id' do
+    before { delete "/users/#{user_id}/time_tables/#{time_table_id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+  end
 end
