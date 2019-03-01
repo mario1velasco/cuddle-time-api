@@ -18,6 +18,12 @@ class TimeTablesController < ApplicationController
     json_response(@user, :created)
   end
 
+  # PUT /users/:user_id/time_tables/:id
+  def update
+    @time_table.update(time_table_params)
+    head :no_content
+  end
+
   private
 
   def time_table_params

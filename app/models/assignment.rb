@@ -18,5 +18,6 @@ class Assignment < ApplicationRecord
 
   # Validations
   validates_presence_of :user_id
+  # validates_presence_of :time_table_id
   # validates :client_id, presence: true, uniqueness: { scope: :user_id }
 end

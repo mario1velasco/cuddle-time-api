@@ -36,6 +36,8 @@ group :development, :test do
   gem 'rb-readline'
   gem 'rspec-rails', '~> 3.5'
   gem 'annotate'
+  gem 'solargraph'
+  gem 'rubocop'
 end
 
 group :development do
