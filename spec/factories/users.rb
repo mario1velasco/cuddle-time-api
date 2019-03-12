@@ -19,5 +19,6 @@ FactoryBot.define do
     email { Faker::Internet.email }
     telephone { Faker::PhoneNumber.phone_number }
     nickname { Faker::Lorem.word }
+    password_digest { Faker::DragonBall }
   end
 end
